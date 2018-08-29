@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>一次跳闸引起的ubuntu命令学习记录 | Yes I need Root</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="ubuntu命令行学习记录公司有个ubuntu12.04系统的samba文件服务器。一次意外跳闸后，就无法进入系统了。文件检测卡在checking battery之类，可以ctrl+alt+F1然后登陆。 经多次推测排查，认为是意外断电导致的文件系统丢失等问题。/usr/lib/x86_64-linux-gnu/目录下的共享动态链接库等都消失了。即使dpkg -i libapt-pkg.deb后也">
+<meta name="keywords" content="ubuntu,linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一次跳闸引起的ubuntu命令学习记录">
+<meta property="og:url" content="http://yoursite.com/2017/09/01/一次跳闸引起的ubuntu命令学习记录/index.html">
+<meta property="og:site_name" content="Yes I need Root">
+<meta property="og:description" content="ubuntu命令行学习记录公司有个ubuntu12.04系统的samba文件服务器。一次意外跳闸后，就无法进入系统了。文件检测卡在checking battery之类，可以ctrl+alt+F1然后登陆。 经多次推测排查，认为是意外断电导致的文件系统丢失等问题。/usr/lib/x86_64-linux-gnu/目录下的共享动态链接库等都消失了。即使dpkg -i libapt-pkg.deb后也">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-08-29T14:08:10.209Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一次跳闸引起的ubuntu命令学习记录">
+<meta name="twitter:description" content="ubuntu命令行学习记录公司有个ubuntu12.04系统的samba文件服务器。一次意外跳闸后，就无法进入系统了。文件检测卡在checking battery之类，可以ctrl+alt+F1然后登陆。 经多次推测排查，认为是意外断电导致的文件系统丢失等问题。/usr/lib/x86_64-linux-gnu/目录下的共享动态链接库等都消失了。即使dpkg -i libapt-pkg.deb后也">
+  
+    <link rel="alternate" href="/atom.xml" title="Yes I need Root" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Yes I need Root</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-一次跳闸引起的ubuntu命令学习记录" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/01/一次跳闸引起的ubuntu命令学习记录/" class="article-date">
+  <time datetime="2017-09-01T07:41:01.000Z" itemprop="datePublished">2017-09-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      一次跳闸引起的ubuntu命令学习记录
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="ubuntu命令行学习记录"><a href="#ubuntu命令行学习记录" class="headerlink" title="ubuntu命令行学习记录"></a>ubuntu命令行学习记录</h1><p>公司有个ubuntu12.04系统的samba文件服务器。一次意外跳闸后，就无法进入系统了。文件检测卡在checking battery之类，可以ctrl+alt+F1然后登陆。</p>
+<p>经多次推测排查，认为是意外断电导致的文件系统丢失等问题。<br>/usr/lib/x86_64-linux-gnu/目录下的共享动态链接库等都消失了。即使dpkg -i libapt-pkg.deb后也没用。</p>
+<p>定位某个库文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">locate libapt-pkg.so.5.0</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo fdisk -l;  # 查看硬盘和分区情况</span><br></pre></td></tr></table></figure>
+<p>Disk /dev/sda doesn’t contain a valid partition table这种提示是正常的！！如果没分区直接挂载使用当然没有分区表！！</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo df -h; # 查看挂载的设备的大小</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo du -h --max-depth=1 /fileDirectory; # 查看单个目录的大小，最后一项会显示为./大小。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo mount /dev/sdb /mnt;</span><br><span class="line">ls /mnt; # 为/dev/sdb/下内容</span><br><span class="line">sudo umount /mnt;</span><br><span class="line">ls /mnt; # 为空</span><br></pre></td></tr></table></figure>
+<h2 id="用ultralISO制作U盘启动盘"><a href="#用ultralISO制作U盘启动盘" class="headerlink" title="用ultralISO制作U盘启动盘"></a>用ultralISO制作U盘启动盘</h2><p>用U盘启动盘try ubuntu，查看其他硬盘状态；<br>必须先取消挂载</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo umount /media/uuid/;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo fsck /dev/sdb/;</span><br></pre></td></tr></table></figure>
+<p>ubuntu分区问题<br>/：          4g，系统所在分区，boot可以不单独分区直接放/下<br>/home：      其他所有<br>swap区：      2G，一般按物理内存大小分配？</p>
+<p>##设置静态ip</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/network/interfaces</span><br></pre></td></tr></table></figure>
+<h2 id="关于防火墙配置"><a href="#关于防火墙配置" class="headerlink" title="关于防火墙配置"></a>关于防火墙配置</h2><p>一个相对iptables简单很多的防火墙配置工具：ufw，默认不启用。也就是说，ubuntu的端口默认都是开放的。<br>启动ufw：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo ufw default deny</span><br><span class="line">$ sudo ufw enable</span><br></pre></td></tr></table></figure>
+<p>打开ssh服务的22端口：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo ufw allow 22</span><br></pre></td></tr></table></figure>
+<p>由于在/etc/services中， 22端口对应的服务名是ssh。所以下面的命令是一样的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo ufw allow ssh</span><br></pre></td></tr></table></figure>
+<p>禁用22端口：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo ufw delete allow 22</span><br></pre></td></tr></table></figure>
+<p>查看防火墙状态：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo ufw status</span><br></pre></td></tr></table></figure>
+<p>关闭防火墙：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudu ufw disable</span><br></pre></td></tr></table></figure>
+<p>更多用法可以通过以下命令查看</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ man ufw</span><br></pre></td></tr></table></figure>
+<h2 id="关于开启ssh登陆"><a href="#关于开启ssh登陆" class="headerlink" title="关于开启ssh登陆"></a>关于开启ssh登陆</h2><p>新安装的ubuntu系统，默认是不支持ssh登录的。<br>SSH分客户端openssh-client和openssh-server<br>如果只是想登陆别的机器的SSH只需要安装openssh-client（ubuntu有默认安装，如果没有则sudoapt-get install openssh-client），如果要使本机开放SSH服务就需要安装openssh-server。<br>这里根据需求只安装了服务端。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get update</span><br><span class="line">$ sudo apt-get install openssh-server</span><br></pre></td></tr></table></figure>
+<p>开启和停止ssh服务端：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#启动</span><br><span class="line">$ /etc/init.d/ssh start</span><br><span class="line"></span><br><span class="line">#停止</span><br><span class="line">$ /etc/init.d/ssh stop</span><br><span class="line"></span><br><span class="line">#重新启动</span><br><span class="line">$ /etc/init.d/ssh restart</span><br><span class="line"></span><br><span class="line">#利用service命令</span><br><span class="line">#启动</span><br><span class="line">$ sudo service ssh start</span><br><span class="line"></span><br><span class="line">#停止</span><br><span class="line">$ sudo service ssh stop</span><br><span class="line"></span><br><span class="line">#重新启动</span><br><span class="line">$ sudo service ssh restart</span><br></pre></td></tr></table></figure>
+<p>查看ssh是否在运行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#如果没有任何显示，是没有运行ssh服务的。反之，出现sshd字样，表示ssh服务已运行。</span><br><span class="line">$ sudo ps -e |grep ssh</span><br></pre></td></tr></table></figure>
+<p>ssh配置文件地址：<code>/etc/ssh/sshd_config</code></p>
+<p>到这里就不得不提一下安全性。。因为我有个鲨鱼的小机只用来搭$$居然也有1000+次尝试登录失败的提醒。<br>（1）改ssh的默认端口为其他如2333<br>改之前先将2333端口打开，配置文件中的port从22改为2333，然后service ssh restart重启服务，命令行指定端口号为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -p 2333 userName@ip</span><br></pre></td></tr></table></figure></p>
+<p>（2）在配置里禁止root登陆，创建密钥对登陆，详见<a href="https://loricheung.github.io/2016/10/02/ssh-server-with-public-key.html" target="_blank" rel="noopener">使用密钥认证服务器</a>但是当你需在不同机器上登录时还是会有点麻烦，而且万一丢失了私钥也会比较麻烦。</p>
+<h2 id="关于linux系统下的挂载"><a href="#关于linux系统下的挂载" class="headerlink" title="关于linux系统下的挂载"></a>关于linux系统下的挂载</h2><p>详见<a href="http://bruce007.blog.51cto.com/7748327/1322236" target="_blank" rel="noopener">Ubuntu - 硬盘分区、格式化、自动挂载配置</a></p>
+<p>根据UUID自动挂载要修改/etc/fstab 文件，一般不重新分区UUID号不会变化。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo blkid # 查看设备uuid</span><br></pre></td></tr></table></figure>
+<h2 id="关于samba文件服务器"><a href="#关于samba文件服务器" class="headerlink" title="关于samba文件服务器"></a>关于samba文件服务器</h2><p>Samba的配置文件为‘/etc/samba/smb.conf’。<br>开启smbd服务后有时候还是无法连接，可能是防火墙的原因，通过关闭防火墙来验证。如果是，只用文件和打印共享服务的话，开启139(TCP)端口就可以。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo service smbd restart</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 测试工具。比如设置的限定用户无效。</span><br><span class="line">$ sudo testparm</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 查看已添加的sabd用户</span><br><span class="line">$ sudo pdbedit -L</span><br></pre></td></tr></table></figure>
+<h2 id="scp跨机远程拷贝"><a href="#scp跨机远程拷贝" class="headerlink" title="scp跨机远程拷贝"></a><a href="http://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/scp.html" target="_blank" rel="noopener">scp跨机远程拷贝</a></h2><ol>
+<li>从远处复制文件到本地目录</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ scp root@10.6.159.147:/opt/soft/demo.tar /opt/soft/</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>从远处复制到本地</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ scp -r root@10.6.159.147:/opt/soft/test /opt/soft/</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>上传本地文件到远程机器指定目录</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ scp /opt/soft/demo.tar root@10.6.159.147:/opt/soft/scptest</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>上传本地目录到远程机器指定目录</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ scp -r /opt/soft/test root@10.6.159.147:/opt/soft/scptest</span><br></pre></td></tr></table></figure>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>因为服务器文件夹和文件名都为中文，ls -ll 后看到的都是？？？无法区分内容，按某宗师给的建议，ls -ll &gt; /seeFileName.txt 拷贝到U盘，在windows上查看中文名称。<br>从ubuntu的utf-8拷贝到windows机器上文件名会乱码且无法更改编码方式情况下，一种不严谨的做法：格式化一个ntfs的硬盘挂载上去，拷贝出来就不会，因为linux会自动转换ntfs能识别的格式。</p>
+<p>参考文档：<br><a href="http://forum.ubuntu.org.cn/viewtopic.php?f=169&amp;t=292611" target="_blank" rel="noopener">Ubuntu的防火墙配置-ufw-iptables</a></p>
+<p><a href="https://segmentfault.com/a/1190000004686476" target="_blank" rel="noopener">Ubuntu开启SSH登录</a></p>
+<p><a href="http://blog.csdn.net/netwalk/article/details/12952051" target="_blank" rel="noopener">Ubuntu环境下SSH的安装及使用</a></p>
+<p><a href="http://www.cnblogs.com/xd502djj/archive/2011/11/23/2260094.html" target="_blank" rel="noopener">Linux添加/删除用户和用户组</a></p>
+<p><a href="http://seanxp.com/2016/samba/" target="_blank" rel="noopener">samba服务器配置</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/09/01/一次跳闸引起的ubuntu命令学习记录/" data-id="cjlf7x7z00007y60o3h7l405i" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubuntu/">ubuntu</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/04/19/macos下使用GLEW和GLFW库学习OpenGL-创建一个窗口/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">macos下使用GLEW和GLFW库学习OpenGL-创建一个窗口</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/SyntaxError/">SyntaxError</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/macos/">macos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openGL/">openGL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/qt5/">qt5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vs/">vs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/打包/">打包</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/SyntaxError/" style="font-size: 10px;">SyntaxError</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/macos/" style="font-size: 10px;">macos</a> <a href="/tags/openGL/" style="font-size: 10px;">openGL</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/qt5/" style="font-size: 10px;">qt5</a> <a href="/tags/ubuntu/" style="font-size: 20px;">ubuntu</a> <a href="/tags/vs/" style="font-size: 10px;">vs</a> <a href="/tags/打包/" style="font-size: 10px;">打包</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/09/01/一次跳闸引起的ubuntu命令学习记录/">一次跳闸引起的ubuntu命令学习记录</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/19/macos下使用GLEW和GLFW库学习OpenGL-创建一个窗口/">macos下使用GLEW和GLFW库学习OpenGL-创建一个窗口</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/02/qt5.5打包记录/">qt5.5打包记录</a>
+          </li>
+        
+          <li>
+            <a href="/2017/01/19/vs报错无法启动程序xxx.exe。系统找不到指定的文件/">vs报错无法启动程序xxx.exe。系统找不到指定的文件</a>
+          </li>
+        
+          <li>
+            <a href="/2017/01/11/ubuntu忘记root密码和忘记登陆密码/">ubuntu忘记root密码和忘记登陆密码</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 mokusolo<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

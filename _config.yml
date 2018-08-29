@@ -81,4 +81,4 @@ deploy:
   type: git
   repo: https://github.com/mokusolo/mokusolo.github.io.git
   branch: master
-  message: [message]
+  message: "{{ now('YYYY-MM-DD HH:mm:ss') }}"

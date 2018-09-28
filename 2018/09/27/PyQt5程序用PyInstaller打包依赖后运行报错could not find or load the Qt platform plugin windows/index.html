@@ -5,15 +5,22 @@
   
 
   
-  <title>Tag: Kivy | Yes I need Root</title>
+  <title>PyQt5程序用PyInstaller打包依赖后运行报错could not find or load the Qt platform plugin windows | Yes I need Root</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Yes I need Root">
-<meta property="og:url" content="http://yoursite.com/tags/Kivy/index.html">
+  <meta name="description" content="用PyQt5写了个简单的程序，PyInstaller打包依赖后在两个同事电脑上运行正常，但另一同事使用后发现报错，内容为：  This application failed to start because it could not find or load the Qt platform plugin “windows” in “”. Reinstalling the application m">
+<meta name="keywords" content="PyQt5,PyInstaller,打包">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PyQt5程序用PyInstaller打包依赖后运行报错could not find or load the Qt platform plugin windows">
+<meta property="og:url" content="http://yoursite.com/2018/09/27/PyQt5程序用PyInstaller打包依赖后运行报错could not find or load the Qt platform plugin windows/index.html">
 <meta property="og:site_name" content="Yes I need Root">
+<meta property="og:description" content="用PyQt5写了个简单的程序，PyInstaller打包依赖后在两个同事电脑上运行正常，但另一同事使用后发现报错，内容为：  This application failed to start because it could not find or load the Qt platform plugin “windows” in “”. Reinstalling the application m">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/img/pyqt5_error.png">
+<meta property="og:updated_time" content="2018-09-28T14:21:42.124Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yes I need Root">
+<meta name="twitter:title" content="PyQt5程序用PyInstaller打包依赖后运行报错could not find or load the Qt platform plugin windows">
+<meta name="twitter:description" content="用PyQt5写了个简单的程序，PyInstaller打包依赖后在两个同事电脑上运行正常，但另一同事使用后发现报错，内容为：  This application failed to start because it could not find or load the Qt platform plugin “windows” in “”. Reinstalling the application m">
+<meta name="twitter:image" content="http://yoursite.com/img/pyqt5_error.png">
   
     <link rel="alternate" href="/atom.xml" title="Yes I need Root" type="application/atom+xml">
   
@@ -60,40 +67,68 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/09/05/在Kivy中自定义MyCheckBox改变显示尺寸/" class="archive-article-date">
-  <time datetime="2018-09-05T13:23:23.000Z" itemprop="datePublished">Sep 5</time>
+        <section id="main"><article id="post-PyQt5程序用PyInstaller打包依赖后运行报错could not find or load the Qt platform plugin windows" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/27/PyQt5程序用PyInstaller打包依赖后运行报错could not find or load the Qt platform plugin windows/" class="article-date">
+  <time datetime="2018-09-27T12:46:13.000Z" itemprop="datePublished">2018-09-27</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/05/在Kivy中自定义MyCheckBox改变显示尺寸/">在Kivy中自定义MyCheckBox改变显示尺寸</a>
+    <h1 class="article-title" itemprop="name">
+      PyQt5程序用PyInstaller打包依赖后运行报错could not find or load the Qt platform plugin windows
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>用PyQt5写了个简单的程序，PyInstaller打包依赖后在两个同事电脑上运行正常，但另一同事使用后发现报错，内容为：</p>
+<blockquote>
+<p>This application failed to start because it could not find or load the Qt platform plugin “windows” in “”.</p>
+<p>Reinstalling the application may fix this problem.</p>
+</blockquote>
+<p>谷歌到的相关问题很多，参考<a href="https://stackoverflow.com/questions/20495620/qt-5-1-1-application-failed-to-start-because-platform-plugin-windows-is-missi" target="_blank" rel="noopener">Qt 5.1.1: Application failed to start because platform plugin “windows” is missing</a>进行了一系列的尝试，比如：</p>
+<ol>
+<li>在.exe同目录下添加Qt目录下的platforms\qwindows.dll</li>
+<li>在.exe通路录下添加Qt目录下的libEGL.dll</li>
+<li>。。。</li>
+</ol>
+<p>均无果。</p>
+<p><img src="/img/pyqt5_error.png" alt=""></p>
+<p>最后无意中发现U盘直接拷贝过去的可以进行，而区别在于目录名一个为中文（❌）一个为英文（✔）。</p>
+<p>对于我这种情况的解决方案：把程序放在纯英文目录下。</p>
 
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/09/27/PyQt5程序用PyInstaller打包依赖后运行报错could not find or load the Qt platform plugin windows/" data-id="cjmm3m3bq00019euu10qapob5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PyInstaller/">PyInstaller</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PyQt5/">PyQt5</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/打包/">打包</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/09/05/在Kivy中自定义MyCheckBox改变显示尺寸/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">在Kivy中自定义MyCheckBox改变显示尺寸</div>
+    </a>
+  
+</nav>
+
+  
+</article>
 
 </section>
         

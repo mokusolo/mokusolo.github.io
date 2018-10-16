@@ -4,7 +4,7 @@ date: 2018-10-12 20:11:56
 tags: [Node-RED, docker, serial]
 ---
 ### 在ubuntu上安装docker
-[ubuntu](https://yeasy.gitbooks.io/docker_practice/install/ubuntu.html)
+[Ubuntu 安装 Docker CE](https://yeasy.gitbooks.io/docker_practice/install/ubuntu.html)
 
 ### 在docker下运行Node-RED
 [Running under Docker](https://nodered.org/docs/platforms/docker)
@@ -25,7 +25,7 @@ docker image ls
 docker container ls -a
 ```
 
-访问127.0.0.1：1880后，发现没有所需的serial节点，要在容器中自行安装。
+访问127.0.0.1:1880后，发现没有所需的serial节点，要在容器中自行安装。
 
 ### 在容器中安装serial节点
 [利用 commit 理解镜像构成](https://yeasy.gitbooks.io/docker_practice/image/commit.html)

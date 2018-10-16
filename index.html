@@ -84,13 +84,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="在ubuntu上安装docker"><a href="#在ubuntu上安装docker" class="headerlink" title="在ubuntu上安装docker"></a>在ubuntu上安装docker</h3><p><a href="https://yeasy.gitbooks.io/docker_practice/install/ubuntu.html" target="_blank" rel="noopener">ubuntu</a></p>
+        <h3 id="在ubuntu上安装docker"><a href="#在ubuntu上安装docker" class="headerlink" title="在ubuntu上安装docker"></a>在ubuntu上安装docker</h3><p><a href="https://yeasy.gitbooks.io/docker_practice/install/ubuntu.html" target="_blank" rel="noopener">Ubuntu 安装 Docker CE</a></p>
 <h3 id="在docker下运行Node-RED"><a href="#在docker下运行Node-RED" class="headerlink" title="在docker下运行Node-RED"></a>在docker下运行Node-RED</h3><p><a href="https://nodered.org/docs/platforms/docker" target="_blank" rel="noopener">Running under Docker</a></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it -p 1880:1880 --name mynodered nodered/node-red-docker</span><br></pre></td></tr></table></figure>
 <p><a href="https://hub.docker.com/r/nodered/node-red-docker/" target="_blank" rel="noopener">参数解释</a></p>
 <p>查看镜像<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker image ls</span><br></pre></td></tr></table></figure></p>
 <p>查看所有容器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker container ls -a</span><br></pre></td></tr></table></figure></p>
-<p>访问127.0.0.1：1880后，发现没有所需的serial节点，要在容器中自行安装。</p>
+<p>访问127.0.0.1:1880后，发现没有所需的serial节点，要在容器中自行安装。</p>
 <h3 id="在容器中安装serial节点"><a href="#在容器中安装serial节点" class="headerlink" title="在容器中安装serial节点"></a>在容器中安装serial节点</h3><p><a href="https://yeasy.gitbooks.io/docker_practice/image/commit.html" target="_blank" rel="noopener">利用 commit 理解镜像构成</a></p>
 <p>进入该名为mynodered的容器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it mynodered bash</span><br></pre></td></tr></table></figure></p>
 <p>终端就会从user@ubuntu之类的变成node-red@container_id这种:<br><a href="https://flows.nodered.org/node/node-red-node-serialport" target="_blank" rel="noopener">安装serial节点</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm i node-red-node-serialport</span><br><span class="line"># ... 等待安装完成</span><br><span class="line">exit</span><br></pre></td></tr></table></figure></p>
@@ -100,7 +100,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/12/运行Node-RED官方docker后安装serial节点/" data-id="cjncd6nf3000ai00onubnr6jm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/12/运行Node-RED官方docker后安装serial节点/" data-id="cjncdb18o000fn90oxr45qae8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-RED/">Node-RED</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/">docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/serial/">serial</a></li></ul>
@@ -140,7 +140,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/08/树莓派刷LEDE(OpenWRT)后开机自启frpc/" data-id="cjncd6nf6000di00ovpvap66w" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/08/树莓派刷LEDE(OpenWRT)后开机自启frpc/" data-id="cjncdb18n000cn90ojlppwftn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LEDE/">LEDE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/frp/">frp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/开机自启/">开机自启</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/树莓派/">树莓派</a></li></ul>
@@ -193,7 +193,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/27/PyQt5程序用PyInstaller打包依赖后运行报错could not find or load the Qt platform plugin windows/" data-id="cjncd6neg0000i00ohsk9qp9r" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/27/PyQt5程序用PyInstaller打包依赖后运行报错could not find or load the Qt platform plugin windows/" data-id="cjncdb1890001n90o5wsi7fsi" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PyInstaller/">PyInstaller</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PyQt5/">PyQt5</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/打包/">打包</a></li></ul>
@@ -240,7 +240,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/05/在Kivy中自定义MyCheckBox改变显示尺寸/" data-id="cjncd6nf10008i00ol7aowniy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/05/在Kivy中自定义MyCheckBox改变显示尺寸/" data-id="cjncdb18j0008n90ov1xsorqs" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CheckBox/">CheckBox</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kivy/">Kivy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ToggleButton/">ToggleButton</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -345,7 +345,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/01/一次跳闸引起的ubuntu命令学习记录/" data-id="cjncd6nex0005i00orl3az89g" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/01/一次跳闸引起的ubuntu命令学习记录/" data-id="cjncdb18l000an90oqeb5ex3r" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubuntu/">ubuntu</a></li></ul>
@@ -409,7 +409,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/04/19/macos下使用GLEW和GLFW库学习OpenGL-创建一个窗口/" data-id="cjncd6net0003i00ol1aiom43" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/04/19/macos下使用GLEW和GLFW库学习OpenGL-创建一个窗口/" data-id="cjncdb18d0003n90o6ede10ub" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/macos/">macos</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/openGL/">openGL</a></li></ul>
@@ -452,7 +452,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/02/qt5.5打包记录/" data-id="cjncd6nez0007i00oj3bsaeg5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/02/qt5.5打包记录/" data-id="cjncdb18g0005n90on045j53v" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/qt5/">qt5</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/打包/">打包</a></li></ul>
@@ -491,7 +491,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/01/19/vs报错无法启动程序xxx.exe。系统找不到指定的文件/" data-id="cjncd6nev0004i00ozkqfvbh6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/01/19/vs报错无法启动程序xxx.exe。系统找不到指定的文件/" data-id="cjncdb18i0007n90ovnf9gfip" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vs/">vs</a></li></ul>
@@ -555,7 +555,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/01/11/ubuntu忘记root密码和忘记登陆密码/" data-id="cjncd6nf4000bi00ojggwo17k" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/01/11/ubuntu忘记root密码和忘记登陆密码/" data-id="cjncdb18f0004n90obie5j1t3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubuntu/">ubuntu</a></li></ul>
@@ -594,7 +594,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/01/11/Inconsistent use of tabs and spaces in indentation/" data-id="cjncd6nen0001i00oswhyx8au" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/01/11/Inconsistent use of tabs and spaces in indentation/" data-id="cjncdb1840000n90of9phkr6i" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SyntaxError/">SyntaxError</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>

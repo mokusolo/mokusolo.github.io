@@ -7,18 +7,18 @@
   
   <title>运行Node-RED官方docker后安装serial节点 | Yes I need Root</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在ubuntu上安装dockerubuntu 在docker下运行Node-REDRunning under Docker 1docker run -it -p 1880:1880 --name mynodered nodered/node-red-docker 参数解释 查看镜像1docker image ls 查看所有容器1docker container ls -a 访问127.0.0.1：">
+  <meta name="description" content="在ubuntu上安装dockerUbuntu 安装 Docker CE 在docker下运行Node-REDRunning under Docker 1docker run -it -p 1880:1880 --name mynodered nodered/node-red-docker 参数解释 查看镜像1docker image ls 查看所有容器1docker container ls -a">
 <meta name="keywords" content="Node-RED,docker,serial">
 <meta property="og:type" content="article">
 <meta property="og:title" content="运行Node-RED官方docker后安装serial节点">
 <meta property="og:url" content="http://yoursite.com/2018/10/12/运行Node-RED官方docker后安装serial节点/index.html">
 <meta property="og:site_name" content="Yes I need Root">
-<meta property="og:description" content="在ubuntu上安装dockerubuntu 在docker下运行Node-REDRunning under Docker 1docker run -it -p 1880:1880 --name mynodered nodered/node-red-docker 参数解释 查看镜像1docker image ls 查看所有容器1docker container ls -a 访问127.0.0.1：">
+<meta property="og:description" content="在ubuntu上安装dockerUbuntu 安装 Docker CE 在docker下运行Node-REDRunning under Docker 1docker run -it -p 1880:1880 --name mynodered nodered/node-red-docker 参数解释 查看镜像1docker image ls 查看所有容器1docker container ls -a">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-16T23:32:59.389Z">
+<meta property="og:updated_time" content="2018-10-16T23:37:19.366Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="运行Node-RED官方docker后安装serial节点">
-<meta name="twitter:description" content="在ubuntu上安装dockerubuntu 在docker下运行Node-REDRunning under Docker 1docker run -it -p 1880:1880 --name mynodered nodered/node-red-docker 参数解释 查看镜像1docker image ls 查看所有容器1docker container ls -a 访问127.0.0.1：">
+<meta name="twitter:description" content="在ubuntu上安装dockerUbuntu 安装 Docker CE 在docker下运行Node-REDRunning under Docker 1docker run -it -p 1880:1880 --name mynodered nodered/node-red-docker 参数解释 查看镜像1docker image ls 查看所有容器1docker container ls -a">
   
     <link rel="alternate" href="/atom.xml" title="Yes I need Root" type="application/atom+xml">
   
@@ -87,13 +87,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="在ubuntu上安装docker"><a href="#在ubuntu上安装docker" class="headerlink" title="在ubuntu上安装docker"></a>在ubuntu上安装docker</h3><p><a href="https://yeasy.gitbooks.io/docker_practice/install/ubuntu.html" target="_blank" rel="noopener">ubuntu</a></p>
+        <h3 id="在ubuntu上安装docker"><a href="#在ubuntu上安装docker" class="headerlink" title="在ubuntu上安装docker"></a>在ubuntu上安装docker</h3><p><a href="https://yeasy.gitbooks.io/docker_practice/install/ubuntu.html" target="_blank" rel="noopener">Ubuntu 安装 Docker CE</a></p>
 <h3 id="在docker下运行Node-RED"><a href="#在docker下运行Node-RED" class="headerlink" title="在docker下运行Node-RED"></a>在docker下运行Node-RED</h3><p><a href="https://nodered.org/docs/platforms/docker" target="_blank" rel="noopener">Running under Docker</a></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it -p 1880:1880 --name mynodered nodered/node-red-docker</span><br></pre></td></tr></table></figure>
 <p><a href="https://hub.docker.com/r/nodered/node-red-docker/" target="_blank" rel="noopener">参数解释</a></p>
 <p>查看镜像<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker image ls</span><br></pre></td></tr></table></figure></p>
 <p>查看所有容器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker container ls -a</span><br></pre></td></tr></table></figure></p>
-<p>访问127.0.0.1：1880后，发现没有所需的serial节点，要在容器中自行安装。</p>
+<p>访问127.0.0.1:1880后，发现没有所需的serial节点，要在容器中自行安装。</p>
 <h3 id="在容器中安装serial节点"><a href="#在容器中安装serial节点" class="headerlink" title="在容器中安装serial节点"></a>在容器中安装serial节点</h3><p><a href="https://yeasy.gitbooks.io/docker_practice/image/commit.html" target="_blank" rel="noopener">利用 commit 理解镜像构成</a></p>
 <p>进入该名为mynodered的容器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it mynodered bash</span><br></pre></td></tr></table></figure></p>
 <p>终端就会从user@ubuntu之类的变成node-red@container_id这种:<br><a href="https://flows.nodered.org/node/node-red-node-serialport" target="_blank" rel="noopener">安装serial节点</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm i node-red-node-serialport</span><br><span class="line"># ... 等待安装完成</span><br><span class="line">exit</span><br></pre></td></tr></table></figure></p>
@@ -103,7 +103,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/12/运行Node-RED官方docker后安装serial节点/" data-id="cjncd6nf3000ai00onubnr6jm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/12/运行Node-RED官方docker后安装serial节点/" data-id="cjncdb18o000fn90oxr45qae8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-RED/">Node-RED</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/">docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/serial/">serial</a></li></ul>

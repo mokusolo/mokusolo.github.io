@@ -5,15 +5,20 @@
   
 
   
-  <title>Archives: 2018 | Yes I need Root</title>
+  <title>运行Node-RED官方docker后安装serial节点 | Yes I need Root</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Yes I need Root">
-<meta property="og:url" content="http://yoursite.com/archives/2018/index.html">
+  <meta name="description" content="在ubuntu上安装dockerubuntu 在docker下运行Node-REDRunning under Docker 1docker run -it -p 1880:1880 --name mynodered nodered/node-red-docker 参数解释 查看镜像1docker image ls 查看所有容器1docker container ls -a 访问127.0.0.1：">
+<meta name="keywords" content="Node-RED,docker,serial">
+<meta property="og:type" content="article">
+<meta property="og:title" content="运行Node-RED官方docker后安装serial节点">
+<meta property="og:url" content="http://yoursite.com/2018/10/12/运行Node-RED官方docker后安装serial节点/index.html">
 <meta property="og:site_name" content="Yes I need Root">
+<meta property="og:description" content="在ubuntu上安装dockerubuntu 在docker下运行Node-REDRunning under Docker 1docker run -it -p 1880:1880 --name mynodered nodered/node-red-docker 参数解释 查看镜像1docker image ls 查看所有容器1docker container ls -a 访问127.0.0.1：">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-10-16T23:32:59.389Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yes I need Root">
+<meta name="twitter:title" content="运行Node-RED官方docker后安装serial节点">
+<meta name="twitter:description" content="在ubuntu上安装dockerubuntu 在docker下运行Node-REDRunning under Docker 1docker run -it -p 1880:1880 --name mynodered nodered/node-red-docker 参数解释 查看镜像1docker image ls 查看所有容器1docker container ls -a 访问127.0.0.1：">
   
     <link rel="alternate" href="/atom.xml" title="Yes I need Root" type="application/atom+xml">
   
@@ -60,97 +65,65 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/10/12/运行Node-RED官方docker后安装serial节点/" class="archive-article-date">
-  <time datetime="2018-10-12T12:11:56.000Z" itemprop="datePublished">Oct 12</time>
+        <section id="main"><article id="post-运行Node-RED官方docker后安装serial节点" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/12/运行Node-RED官方docker后安装serial节点/" class="article-date">
+  <time datetime="2018-10-12T12:11:56.000Z" itemprop="datePublished">2018-10-12</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/10/12/运行Node-RED官方docker后安装serial节点/">运行Node-RED官方docker后安装serial节点</a>
+    <h1 class="article-title" itemprop="name">
+      运行Node-RED官方docker后安装serial节点
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/10/08/树莓派刷LEDE(OpenWRT)后开机自启frpc/" class="archive-article-date">
-  <time datetime="2018-10-08T13:30:47.000Z" itemprop="datePublished">Oct 8</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/10/08/树莓派刷LEDE(OpenWRT)后开机自启frpc/">树莓派刷LEDE(OpenWrt)后开机自启frpc</a>
-    </h1>
-  
+        <h3 id="在ubuntu上安装docker"><a href="#在ubuntu上安装docker" class="headerlink" title="在ubuntu上安装docker"></a>在ubuntu上安装docker</h3><p><a href="https://yeasy.gitbooks.io/docker_practice/install/ubuntu.html" target="_blank" rel="noopener">ubuntu</a></p>
+<h3 id="在docker下运行Node-RED"><a href="#在docker下运行Node-RED" class="headerlink" title="在docker下运行Node-RED"></a>在docker下运行Node-RED</h3><p><a href="https://nodered.org/docs/platforms/docker" target="_blank" rel="noopener">Running under Docker</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it -p 1880:1880 --name mynodered nodered/node-red-docker</span><br></pre></td></tr></table></figure>
+<p><a href="https://hub.docker.com/r/nodered/node-red-docker/" target="_blank" rel="noopener">参数解释</a></p>
+<p>查看镜像<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker image ls</span><br></pre></td></tr></table></figure></p>
+<p>查看所有容器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker container ls -a</span><br></pre></td></tr></table></figure></p>
+<p>访问127.0.0.1：1880后，发现没有所需的serial节点，要在容器中自行安装。</p>
+<h3 id="在容器中安装serial节点"><a href="#在容器中安装serial节点" class="headerlink" title="在容器中安装serial节点"></a>在容器中安装serial节点</h3><p><a href="https://yeasy.gitbooks.io/docker_practice/image/commit.html" target="_blank" rel="noopener">利用 commit 理解镜像构成</a></p>
+<p>进入该名为mynodered的容器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it mynodered bash</span><br></pre></td></tr></table></figure></p>
+<p>终端就会从user@ubuntu之类的变成node-red@container_id这种:<br><a href="https://flows.nodered.org/node/node-red-node-serialport" target="_blank" rel="noopener">安装serial节点</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm i node-red-node-serialport</span><br><span class="line"># ... 等待安装完成</span><br><span class="line">exit</span><br></pre></td></tr></table></figure></p>
+<p>查看具体改动:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker diff mynodered</span><br></pre></td></tr></table></figure></p>
+<h3 id="提交为镜像"><a href="#提交为镜像" class="headerlink" title="提交为镜像"></a>提交为镜像</h3><p>暂略</p>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/09/27/PyQt5程序用PyInstaller打包依赖后运行报错could not find or load the Qt platform plugin windows/" class="archive-article-date">
-  <time datetime="2018-09-27T12:46:13.000Z" itemprop="datePublished">Sep 27</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/27/PyQt5程序用PyInstaller打包依赖后运行报错could not find or load the Qt platform plugin windows/">PyQt5程序用PyInstaller打包依赖后运行报错could not find or load the Qt platform plugin windows</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/09/05/在Kivy中自定义MyCheckBox改变显示尺寸/" class="archive-article-date">
-  <time datetime="2018-09-05T13:23:23.000Z" itemprop="datePublished">Sep 5</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/12/运行Node-RED官方docker后安装serial节点/" data-id="cjncd6nf3000ai00onubnr6jm" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/05/在Kivy中自定义MyCheckBox改变显示尺寸/">在Kivy中自定义MyCheckBox改变显示尺寸</a>
-    </h1>
-  
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-RED/">Node-RED</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/">docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/serial/">serial</a></li></ul>
 
-    </header>
+    </footer>
   </div>
-</article>
+  
+    
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2018/10/08/树莓派刷LEDE(OpenWRT)后开机自启frpc/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">树莓派刷LEDE(OpenWrt)后开机自启frpc</div>
+    </a>
   
+</nav>
 
+  
+</article>
 
 </section>
         

@@ -5,15 +5,20 @@
   
 
   
-  <title>Tag: Kivy | Yes I need Root</title>
+  <title>Raspbian Stretch Lite设置wifi及静态IP | Yes I need Root</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Yes I need Root">
-<meta property="og:url" content="http://yoursite.com/tags/Kivy/index.html">
+  <meta name="description" content="记录以备查  设置要连接的wifi名称和密码  1sudo nano /etc/wpa_supplicant/wpa_supplicant.conf 添加内容1234network=&amp;#123;    ssid=&amp;quot;wifi_name&amp;quot;    psk=&amp;quot;wifi_password&amp;quot;&amp;#125;  设置wifi连接下的静态ip  1sudo nano /etc/">
+<meta name="keywords" content="树莓派">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Raspbian Stretch Lite设置wifi及静态IP">
+<meta property="og:url" content="http://yoursite.com/2018/12/08/Raspbian Stretch Lite设置wifi及静态IP/index.html">
 <meta property="og:site_name" content="Yes I need Root">
+<meta property="og:description" content="记录以备查  设置要连接的wifi名称和密码  1sudo nano /etc/wpa_supplicant/wpa_supplicant.conf 添加内容1234network=&amp;#123;    ssid=&amp;quot;wifi_name&amp;quot;    psk=&amp;quot;wifi_password&amp;quot;&amp;#125;  设置wifi连接下的静态ip  1sudo nano /etc/">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-12-08T04:09:59.970Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yes I need Root">
+<meta name="twitter:title" content="Raspbian Stretch Lite设置wifi及静态IP">
+<meta name="twitter:description" content="记录以备查  设置要连接的wifi名称和密码  1sudo nano /etc/wpa_supplicant/wpa_supplicant.conf 添加内容1234network=&amp;#123;    ssid=&amp;quot;wifi_name&amp;quot;    psk=&amp;quot;wifi_password&amp;quot;&amp;#125;  设置wifi连接下的静态ip  1sudo nano /etc/">
   
     <link rel="alternate" href="/atom.xml" title="Yes I need Root" type="application/atom+xml">
   
@@ -60,78 +65,74 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/12/05/Raspbian Stretch Lite安装kivy并运行demo显示在触摸屏上/" class="archive-article-date">
-  <time datetime="2018-12-05T12:39:12.000Z" itemprop="datePublished">Dec 5</time>
+        <section id="main"><article id="post-Raspbian Stretch Lite设置wifi及静态IP" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/08/Raspbian Stretch Lite设置wifi及静态IP/" class="article-date">
+  <time datetime="2018-12-08T04:05:36.000Z" itemprop="datePublished">2018-12-08</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/12/05/Raspbian Stretch Lite安装kivy并运行demo显示在触摸屏上/">Raspbian Stretch Lite安装kivy并运行demo显示在触摸屏上</a>
+    <h1 class="article-title" itemprop="name">
+      Raspbian Stretch Lite设置wifi及静态IP
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/10/16/buildozer打包kivy应用程序为安卓apk时卡在refreshing resources/" class="archive-article-date">
-  <time datetime="2018-10-16T12:28:13.000Z" itemprop="datePublished">Oct 16</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/10/16/buildozer打包kivy应用程序为安卓apk时卡在refreshing resources/">buildozer打包kivy应用程序为安卓apk时卡在refreshing resources</a>
-    </h1>
-  
+        <p>记录以备查</p>
+<ol>
+<li>设置要连接的wifi名称和密码</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/wpa_supplicant/wpa_supplicant.conf</span><br></pre></td></tr></table></figure>
+<p>添加内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">network=&#123;</span><br><span class="line">    ssid=&quot;wifi_name&quot;</span><br><span class="line">    psk=&quot;wifi_password&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ol start="2">
+<li>设置wifi连接下的静态ip</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/dhcpcd.conf</span><br></pre></td></tr></table></figure>
+<p>按照上面的例子添加内容，这里假设所在网段为192.168.8.1<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">interface wlan0</span><br><span class="line">static ip_address=192.168.8.111/24</span><br><span class="line">static routers=192.168.8.1</span><br><span class="line">static domain_name_servers=192.168.8.1 8.8.8.8</span><br></pre></td></tr></table></figure></p>
+<p>如果要设置有线网的静态ip，把interface wlan0改为interface eth0即可。</p>
+<ol start="3">
+<li>以上前提为ssh已连接<br>在现在的版本镜像中，将image刷入microsd卡后，新建一个没有后缀的ssh文件开启功能。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch ssh</span><br></pre></td></tr></table></figure>
+<p>参考</p>
+<ol>
+<li><a href="https://blog.csdn.net/wangteng12345678/article/details/77140773" target="_blank" rel="noopener">树莓派3B命令行配置wifi，远程桌面连接，扩展存储</a></li>
+<li><a href="https://blog.csdn.net/u011973222/article/details/72843127" target="_blank" rel="noopener">Raspberry PI 3静态IP配置</a></li>
+</ol>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/09/05/在Kivy中自定义MyCheckBox改变显示尺寸/" class="archive-article-date">
-  <time datetime="2018-09-05T13:23:23.000Z" itemprop="datePublished">Sep 5</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/05/在Kivy中自定义MyCheckBox改变显示尺寸/">在Kivy中自定义MyCheckBox改变显示尺寸</a>
-    </h1>
-  
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/12/08/Raspbian Stretch Lite设置wifi及静态IP/" data-id="cjpext7q70004x80onq2cf06c" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/树莓派/">树莓派</a></li></ul>
 
-    </header>
+    </footer>
   </div>
-</article>
+  
+    
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2018/12/05/Raspbian Stretch Lite安装kivy并运行demo显示在触摸屏上/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Raspbian Stretch Lite安装kivy并运行demo显示在触摸屏上</div>
+    </a>
   
+</nav>
 
+  
+</article>
 
 </section>
         

@@ -33,7 +33,7 @@ sudo apt-get install libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf
    python3-setuptools libgstreamer1.0-dev git-core \
    gstreamer1.0-plugins-{bad,base,good,ugly} \
    gstreamer1.0-{omx,alsa} python3-dev libmtdev-dev \
-   xclip xsel
+   xclip xsel python3-pip
 ```
 3.
 ```

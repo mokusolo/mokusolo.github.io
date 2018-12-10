@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Yes I need Root">
 <meta property="og:description" content="记录下在Raspbian Stretch Lite安装kivy的过程以备查 准备工作 从树莓派官网下载Raspbian Stretch Lite镜像 windows通过Win32DiskImager（macos可通过Etcher或者命令行）将.img刷入microsd卡（此处使用的是3b）。Stretch Lite的话，4g的卡即可，但现在一般不会买4g了。。。 在/boot/目录新建不含后缀的文">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-05T12:55:17.856Z">
+<meta property="og:updated_time" content="2018-12-10T15:01:06.445Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Raspbian Stretch Lite安装kivy并运行demo显示在触摸屏上">
 <meta name="twitter:description" content="记录下在Raspbian Stretch Lite安装kivy的过程以备查 准备工作 从树莓派官网下载Raspbian Stretch Lite镜像 windows通过Win32DiskImager（macos可通过Etcher或者命令行）将.img刷入microsd卡（此处使用的是3b）。Stretch Lite的话，4g的卡即可，但现在一般不会买4g了。。。 在/boot/目录新建不含后缀的文">
@@ -100,7 +100,7 @@
 <h2 id="在树莓派上安装kivy"><a href="#在树莓派上安装kivy" class="headerlink" title="在树莓派上安装kivy"></a>在树莓派上安装kivy</h2><p>官方安装指南<a href="https://kivy.org/doc/stable/installation/installation-rpi.html#manual-installation-on-raspbian-jessie-stretch" target="_blank" rel="noopener">Installation on Raspberry Pi</a></p>
 <p>此处想要安装的是python3版本，将官方教程的pip和python改为pip3和python3</p>
 <p>1.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure></p>
-<p>2.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 这里如果说没有获取某些包让apt-get update或者--fix-missing那就再后面加上--fix-missing</span><br><span class="line"></span><br><span class="line">sudo apt-get install libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev \</span><br><span class="line">   pkg-config libgl1-mesa-dev libgles2-mesa-dev \</span><br><span class="line">   python3-setuptools libgstreamer1.0-dev git-core \</span><br><span class="line">   gstreamer1.0-plugins-&#123;bad,base,good,ugly&#125; \</span><br><span class="line">   gstreamer1.0-&#123;omx,alsa&#125; python3-dev libmtdev-dev \</span><br><span class="line">   xclip xsel</span><br></pre></td></tr></table></figure></p>
+<p>2.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 这里如果说没有获取某些包让apt-get update或者--fix-missing那就再后面加上--fix-missing</span><br><span class="line"></span><br><span class="line">sudo apt-get install libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev \</span><br><span class="line">   pkg-config libgl1-mesa-dev libgles2-mesa-dev \</span><br><span class="line">   python3-setuptools libgstreamer1.0-dev git-core \</span><br><span class="line">   gstreamer1.0-plugins-&#123;bad,base,good,ugly&#125; \</span><br><span class="line">   gstreamer1.0-&#123;omx,alsa&#125; python3-dev libmtdev-dev \</span><br><span class="line">   xclip xsel python3-pip</span><br></pre></td></tr></table></figure></p>
 <p>3.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pip3 install -U Cython==0.28.2</span><br></pre></td></tr></table></figure></p>
 <p>4.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pip3 install git+https://github.com/kivy/kivy.git@master</span><br></pre></td></tr></table></figure></p>
 <p>太慢了，就直接浏览器下载了<a href="https://codeload.github.com/kivy/kivy/zip/stable-1.10" target="_blank" rel="noopener">1.10.x的stable版本</a>，再通过WinSCP传到树莓派。</p>
@@ -144,7 +144,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/05/Raspbian Stretch Lite安装kivy并运行demo显示在触摸屏上/" data-id="cjpext7q00001x80oazclrbq9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/05/Raspbian Stretch Lite安装kivy并运行demo显示在触摸屏上/" data-id="cjpiyn7ax0001aw0o6gclo8x0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kivy/">Kivy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/树莓派/">树莓派</a></li></ul>

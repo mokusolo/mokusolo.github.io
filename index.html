@@ -62,6 +62,62 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-node-red代码版本控制" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/22/node-red代码版本控制/" class="article-date">
+  <time datetime="2019-08-22T14:04:23.000Z" itemprop="datePublished">2019-08-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/22/node-red代码版本控制/">node-red代码版本控制</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>记录以备查</p>
+<p>之前对于node-red代码的备份都是复制~/.node-red/flows_xxx.json文件并保存n个版本，很烦，即使使用Beyond Compare这种对比软件去对比未美化格式的json文件查看更改内容也是一团糟，搜索时发现可以通过更改~/.node-red/settings.js中的设置使flows_xxx.json文件保存时就美化格式。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo nano ~/.node-red/settings.js</span><br><span class="line"># ctrl+w 搜索 flowFilePretty 找到该行并取消注释</span><br></pre></td></tr></table></figure></p>
+<p>复制文件并不是一个好的版本控制解决方案，发现官方在0.18版本开始就有projects一说并支持版本控制，只是在设置里默认不开启。详见<a href="https://nodered.org/docs/user-guide/projects/" target="_blank" rel="noopener">projects</a></p>
+<ol>
+<li>开启projects支持</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo nano ~/.node-red/settings.js</span><br><span class="line"># 找到projects: &#123;enabled: false&#125; 改为 enabled: true</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><p>重启node-red</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ls -ll ~/.node-red/</span><br><span class="line"># 会发现多了projects/目录</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重新访问node-red网页服务地址如127.0.0.1:1880<br>根据提示创建或者克隆项目</p>
+</li>
+<li><p>侧边栏信息<br><img src="/img/2019/project_info_sidebar.png" alt=""><br>上图中info页显示当前的项目名</p>
+</li>
+</ol>
+<p><img src="/img/2019/project_local_changes.png" alt=""><br>上图中history页中，Local Changes下的Local files显示当前变更的文件，点击文件名可以看到具体节点的变化内容，按+就相当于git add filename的意思；Changes to commit显示已经add还没commit的文件，按commit后会让你输入描述，确定后就是git commit -m “description”。</p>
+<p><img src="/img/2019/project_commit_history.png" alt=""><br>上图中，Commit History可以看到提交的历史。若设置了远程仓库地址，在这里还能看到本地比远程ahead了几个commit之类的信息，也可以push或者pull操作。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/08/22/node-red代码版本控制/" data-id="cjzmsxg0o0005y40o84nolqvj" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node-red/">node-red</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Raspbian Stretch Lite设置wifi及静态IP" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/12/08/Raspbian Stretch Lite设置wifi及静态IP/" class="article-date">
@@ -109,7 +165,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/08/Raspbian Stretch Lite设置wifi及静态IP/" data-id="cjpiyn7b20003aw0ok8xpfzoq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/08/Raspbian Stretch Lite设置wifi及静态IP/" data-id="cjzmsxg0m0004y40ojvr8p03w" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/树莓派/">树莓派</a></li></ul>
@@ -200,7 +256,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/05/Raspbian Stretch Lite安装kivy并运行demo显示在触摸屏上/" data-id="cjpiyn7ax0001aw0o6gclo8x0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/05/Raspbian Stretch Lite安装kivy并运行demo显示在触摸屏上/" data-id="cjzmsxg0k0003y40ozbe38mor" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kivy/">Kivy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/树莓派/">树莓派</a></li></ul>
@@ -253,7 +309,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/16/buildozer打包kivy应用程序为安卓apk时卡在refreshing resources/" data-id="cjpiyn7b60005aw0oahiwru4i" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/16/buildozer打包kivy应用程序为安卓apk时卡在refreshing resources/" data-id="cjzmsxg0s0008y40ohnjnqrcz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kivy/">Kivy</a></li></ul>
@@ -303,7 +359,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/12/运行Node-RED官方docker后安装serial节点/" data-id="cjpiyn7bo000kaw0oc508iwgr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/12/运行Node-RED官方docker后安装serial节点/" data-id="cjzmsxg10000iy40o7xo194rb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-RED/">Node-RED</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/">docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/serial/">serial</a></li></ul>
@@ -343,7 +399,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/08/树莓派刷LEDE(OpenWRT)后开机自启frpc/" data-id="cjpiyn7bk000faw0olodfix5g" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/08/树莓派刷LEDE(OpenWRT)后开机自启frpc/" data-id="cjzmsxg0y000gy40op8pad5oo" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LEDE/">LEDE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/frp/">frp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/开机自启/">开机自启</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/树莓派/">树莓派</a></li></ul>
@@ -396,7 +452,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/27/PyQt5程序用PyInstaller打包依赖后运行报错could not find or load the Qt platform plugin windows/" data-id="cjpiyn7as0000aw0o95auj42s" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/27/PyQt5程序用PyInstaller打包依赖后运行报错could not find or load the Qt platform plugin windows/" data-id="cjzmsxg0f0001y40oxjfo9gud" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PyInstaller/">PyInstaller</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PyQt5/">PyQt5</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/打包/">打包</a></li></ul>
@@ -443,7 +499,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/05/在Kivy中自定义MyCheckBox改变显示尺寸/" data-id="cjpiyn7bg000daw0odq3mejbd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/05/在Kivy中自定义MyCheckBox改变显示尺寸/" data-id="cjzmsxg0v000cy40o8dyhwv0d" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CheckBox/">CheckBox</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kivy/">Kivy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ToggleButton/">ToggleButton</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -548,7 +604,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/01/一次跳闸引起的ubuntu命令学习记录/" data-id="cjpiyn7bn000iaw0o1kks6ky0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/01/一次跳闸引起的ubuntu命令学习记录/" data-id="cjzmsxg11000jy40oirxb0go3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubuntu/">ubuntu</a></li></ul>
@@ -612,53 +668,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/04/19/macos下使用GLEW和GLFW库学习OpenGL-创建一个窗口/" data-id="cjpiyn7b80007aw0ogoe2yc0c" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/04/19/macos下使用GLEW和GLFW库学习OpenGL-创建一个窗口/" data-id="cjzmsxg0u000ay40oj6kx0ro5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/macos/">macos</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/openGL/">openGL</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-qt5.5打包记录" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/02/qt5.5打包记录/" class="article-date">
-  <time datetime="2017-03-01T16:37:35.000Z" itemprop="datePublished">2017-03-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/02/qt5.5打包记录/">qt5.5打包记录</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="windeployqt-exe"><a href="#windeployqt-exe" class="headerlink" title=" windeployqt.exe"></a><i class="icon-pencil"></i> windeployqt.exe</h4><p>qt内置的应用，在qt目录搜索就得到了路径，~/Qt/Qt5.5.1/5.5/mingw492_32/bin/仅作参考。用法为用命令行windeployqt.exe your_application_name.exe（qt在release下编译得到的.exe文件），就会把依赖的东西都拷贝进去。但是很不靠谱！</p>
-<h4 id="手动拷贝"><a href="#手动拷贝" class="headerlink" title=" 手动拷贝"></a><i class="icon-pencil"></i> 手动拷贝</h4><p>现在your_application_name.exe和一堆依赖文件在一个文件夹，双击看看还差什么dll去qt里搜了复制过来。</p>
-<h4 id="无法定位程序输入点于动态链接库"><a href="#无法定位程序输入点于动态链接库" class="headerlink" title=" 无法定位程序输入点于动态链接库"></a><i class="icon-pencil"></i> 无法定位程序输入点于动态链接库</h4><p>一个字，坑。。。可能是因为我环境变量比较乱，上面脚本拷贝的QtCore5.dll这种库不对，从ProcessExplorer和depends看了半天也没想通。。后来看到有人说环境变量的事，和qt目录下的dll一对比的确大小不一样，拷贝正确的过去就可以了。</p>
-<h4 id="Enigma-Virtual-Box打包没什么好记录的"><a href="#Enigma-Virtual-Box打包没什么好记录的" class="headerlink" title=" Enigma Virtual Box打包没什么好记录的"></a><i class="icon-pencil"></i> Enigma Virtual Box打包没什么好记录的</h4><p>别忘记勾压缩选项</p>
-<p>参考：<br>【1】<a href="https://www.shintaku.cc/posts/qt/" target="_blank" rel="noopener">https://www.shintaku.cc/posts/qt/</a><br>【2】<a href="http://blog.163.com/dongjuan_1112/blog/static/546829832011213111556/" target="_blank" rel="noopener">http://blog.163.com/dongjuan_1112/blog/static/546829832011213111556/</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/02/qt5.5打包记录/" data-id="cjpiyn7ba0008aw0ob17iuyme" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/qt5/">qt5</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/打包/">打包</a></li></ul>
 
     </footer>
   </div>
@@ -685,7 +698,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CheckBox/">CheckBox</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kivy/">Kivy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LEDE/">LEDE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-RED/">Node-RED</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyInstaller/">PyInstaller</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyQt5/">PyQt5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SyntaxError/">SyntaxError</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ToggleButton/">ToggleButton</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/frp/">frp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/macos/">macos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openGL/">openGL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/qt5/">qt5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/serial/">serial</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vs/">vs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开机自启/">开机自启</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/打包/">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树莓派/">树莓派</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CheckBox/">CheckBox</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kivy/">Kivy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LEDE/">LEDE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-RED/">Node-RED</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyInstaller/">PyInstaller</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyQt5/">PyQt5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SyntaxError/">SyntaxError</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ToggleButton/">ToggleButton</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/frp/">frp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/macos/">macos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-red/">node-red</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openGL/">openGL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/qt5/">qt5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/serial/">serial</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vs/">vs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开机自启/">开机自启</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/打包/">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树莓派/">树莓派</a></li></ul>
     </div>
   </div>
 
@@ -695,7 +708,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CheckBox/" style="font-size: 10px;">CheckBox</a> <a href="/tags/Kivy/" style="font-size: 20px;">Kivy</a> <a href="/tags/LEDE/" style="font-size: 10px;">LEDE</a> <a href="/tags/Node-RED/" style="font-size: 10px;">Node-RED</a> <a href="/tags/PyInstaller/" style="font-size: 10px;">PyInstaller</a> <a href="/tags/PyQt5/" style="font-size: 10px;">PyQt5</a> <a href="/tags/SyntaxError/" style="font-size: 10px;">SyntaxError</a> <a href="/tags/ToggleButton/" style="font-size: 10px;">ToggleButton</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/frp/" style="font-size: 10px;">frp</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/macos/" style="font-size: 10px;">macos</a> <a href="/tags/openGL/" style="font-size: 10px;">openGL</a> <a href="/tags/python/" style="font-size: 15px;">python</a> <a href="/tags/qt5/" style="font-size: 10px;">qt5</a> <a href="/tags/serial/" style="font-size: 10px;">serial</a> <a href="/tags/ubuntu/" style="font-size: 15px;">ubuntu</a> <a href="/tags/vs/" style="font-size: 10px;">vs</a> <a href="/tags/开机自启/" style="font-size: 10px;">开机自启</a> <a href="/tags/打包/" style="font-size: 15px;">打包</a> <a href="/tags/树莓派/" style="font-size: 20px;">树莓派</a>
+      <a href="/tags/CheckBox/" style="font-size: 10px;">CheckBox</a> <a href="/tags/Kivy/" style="font-size: 20px;">Kivy</a> <a href="/tags/LEDE/" style="font-size: 10px;">LEDE</a> <a href="/tags/Node-RED/" style="font-size: 10px;">Node-RED</a> <a href="/tags/PyInstaller/" style="font-size: 10px;">PyInstaller</a> <a href="/tags/PyQt5/" style="font-size: 10px;">PyQt5</a> <a href="/tags/SyntaxError/" style="font-size: 10px;">SyntaxError</a> <a href="/tags/ToggleButton/" style="font-size: 10px;">ToggleButton</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/frp/" style="font-size: 10px;">frp</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/macos/" style="font-size: 10px;">macos</a> <a href="/tags/node-red/" style="font-size: 10px;">node-red</a> <a href="/tags/openGL/" style="font-size: 10px;">openGL</a> <a href="/tags/python/" style="font-size: 15px;">python</a> <a href="/tags/qt5/" style="font-size: 10px;">qt5</a> <a href="/tags/serial/" style="font-size: 10px;">serial</a> <a href="/tags/ubuntu/" style="font-size: 15px;">ubuntu</a> <a href="/tags/vs/" style="font-size: 10px;">vs</a> <a href="/tags/开机自启/" style="font-size: 10px;">开机自启</a> <a href="/tags/打包/" style="font-size: 15px;">打包</a> <a href="/tags/树莓派/" style="font-size: 20px;">树莓派</a>
     </div>
   </div>
 
@@ -704,7 +717,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li></ul>
     </div>
   </div>
 
@@ -715,6 +728,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/08/22/node-red代码版本控制/">node-red代码版本控制</a>
+          </li>
         
           <li>
             <a href="/2018/12/08/Raspbian Stretch Lite设置wifi及静态IP/">Raspbian Stretch Lite设置wifi及静态IP</a>
@@ -732,10 +749,6 @@
             <a href="/2018/10/12/运行Node-RED官方docker后安装serial节点/">运行Node-RED官方docker后安装serial节点</a>
           </li>
         
-          <li>
-            <a href="/2018/10/08/树莓派刷LEDE(OpenWRT)后开机自启frpc/">树莓派刷LEDE(OpenWrt)后开机自启frpc</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -748,7 +761,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2018 mokusolo<br>
+      &copy; 2019 mokusolo<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

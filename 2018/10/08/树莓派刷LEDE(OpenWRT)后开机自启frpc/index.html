@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
 
@@ -32,7 +32,7 @@
   
   <link rel="stylesheet" href="/css/style.css">
 </head>
-
+</html>
 <body>
   <div id="container">
     <div id="wrap">
@@ -90,12 +90,12 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>树莓派安装LEDE实现翻墙后，总想搞点事情比如远程下载之类。<br>因为租房的联通网并没有公网IP也懒得折腾，之前用过ngrok，最近无意中发现frp就用上了。<br>参考<a href="https://wiki.openwrt.org/doc/techref/initscripts" target="_blank" rel="noopener">OpenWrt Init Scripts</a>设置未果，一直苦于树莓派上的frpc服务没能开机自启，远程时就不敢瞎折腾。<br>最终参考<a href="https://blog.ferstar.org/post/deploy-frp-on-openwrt/" target="_blank" rel="noopener">deploy-frp-on-openwrt</a>得以解决，似乎是启动顺序问题，在frpc脚本运行到的时候仍有需要的服务未开启。<br>救命语句<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sleep 30</span><br></pre></td></tr></table></figure></p>
-<p><img src="/img/lede17.01_autostart_frpc_when_reboot.png" alt=""></p>
+<p><img src="/img/lede17.01_autostart_frpc_when_reboot.png" alt></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/08/树莓派刷LEDE(OpenWRT)后开机自启frpc/" data-id="cjzmsyusd000l0b0owem2g4rg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/08/树莓派刷LEDE(OpenWRT)后开机自启frpc/" data-id="cjznawrw1000bpa0owvfsg4az" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LEDE/">LEDE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/frp/">frp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/开机自启/">开机自启</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/树莓派/">树莓派</a></li></ul>

@@ -62,6 +62,51 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-dietpi镜像有时无法使用pishrink脚本缩小的原因" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/10/17/dietpi镜像有时无法使用pishrink脚本缩小的原因/" class="article-date">
+  <time datetime="2019-10-17T14:04:08.000Z" itemprop="datePublished">2019-10-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/17/dietpi镜像有时无法使用pishrink脚本缩小的原因/">dietpi镜像有时无法使用pishrink脚本缩小的原因</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>记录以备查</p>
+<p>一般使用Win32DiskImager在windows系统上备份树莓派的镜像，这种方式备份出来的镜像为sd卡容量的大小，若在16g卡上安装了一个4g不到的系统，备份出来不仅占空间，刷入时也更花时间，最尴尬的是都是16g的卡也有可能出现略微的容量差异，导致容量小一点的就没法刷入。</p>
+<p>在看<a href="https://blog.csdn.net/lb1885727/article/details/77574502" target="_blank" rel="noopener">Raspberrypi 3 系统备份还原， 基于最小系统镜像实现</a>一文时，注意到以下这句话，才意识到dietpi镜像使用pishrink脚本缩小报ERROR: Image already shrunk to smallest size的原因。<br><img src="/img/2019/boot_and_root.png" alt></p>
+<p>经搜索，发现dietpi系统应该是只在第一次启动时会扩展分区，这被写成一个service而不是像raspberry系统中可以在raspi-config命令后找到，推测运行一次就被mask（注销unit）了。而在工作过程中，16g的卡，我可能用pishrink脚本将初始的dietpi镜像缩小成了4g的dietpi-shrink.img，再把dietpi-shrink.img写入到新的sd后，扩展分区的服务（dietpi-fs_partition_resize.service）并不会运行了，所以/root分区的大小可能就只有3.7g，若再把这个新sd卡上的镜像备份出来（16g），那就无法使用pishrink缩小了。</p>
+<p><a href="https://github.com/MichaIng/DietPi/issues/1821" target="_blank" rel="noopener">DietPi-Drive_Manager | Expand file system button, in case of changed storage</a><br>以上链接给出了解决方法，不需要手动扩展，毕竟方便，只需把扩展分区服务unmask。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl unmask dietpi-fs_partition_resize.service</span><br><span class="line">systemctl enable dietpi-fs_partition_resize.service</span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
+<p>重启后备份这个新sd卡上的镜像出来，就又可以使用pishrink缩小了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/10/17/dietpi镜像有时无法使用pishrink脚本缩小的原因/" data-id="ck1us3rgj0004tc0ox0uzy1k1" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dietpi/">dietpi</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pishrink/">pishrink</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/树莓派/">树莓派</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-node-red代码版本控制" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/08/22/node-red代码版本控制/" class="article-date">
@@ -107,7 +152,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/22/node-red代码版本控制/" data-id="cjznawrw3000dpa0o2mlpbh9g" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/22/node-red代码版本控制/" data-id="ck1us3rgi0003tc0o4a5lxlwi" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node-red/">node-red</a></li></ul>
@@ -166,7 +211,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/08/Raspbian Stretch Lite设置wifi及静态IP/" data-id="cjznawrvo0003pa0odw9nfgdl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/08/Raspbian Stretch Lite设置wifi及静态IP/" data-id="ck1us3rgk0005tc0owgc70p3z" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/树莓派/">树莓派</a></li></ul>
@@ -257,7 +302,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/05/Raspbian Stretch Lite安装kivy并运行demo显示在触摸屏上/" data-id="cjznawrvj0001pa0owidjz9wx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/05/Raspbian Stretch Lite安装kivy并运行demo显示在触摸屏上/" data-id="ck1us3rgg0002tc0og2ae3avf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kivy/">Kivy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/树莓派/">树莓派</a></li></ul>
@@ -310,7 +355,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/16/buildozer打包kivy应用程序为安卓apk时卡在refreshing resources/" data-id="cjznawrvr0004pa0oj23lf9uc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/16/buildozer打包kivy应用程序为安卓apk时卡在refreshing resources/" data-id="ck1us3rgm0007tc0o3v6sl2y7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kivy/">Kivy</a></li></ul>
@@ -360,7 +405,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/12/运行Node-RED官方docker后安装serial节点/" data-id="cjznawrw2000cpa0otzqmpbyt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/12/运行Node-RED官方docker后安装serial节点/" data-id="ck1us3rgu000etc0om6if3itt" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-RED/">Node-RED</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/">docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/serial/">serial</a></li></ul>
@@ -400,7 +445,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/08/树莓派刷LEDE(OpenWRT)后开机自启frpc/" data-id="cjznawrw1000bpa0owvfsg4az" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/08/树莓派刷LEDE(OpenWRT)后开机自启frpc/" data-id="ck1us3rgs000dtc0or36plpvr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LEDE/">LEDE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/frp/">frp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/开机自启/">开机自启</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/树莓派/">树莓派</a></li></ul>
@@ -453,7 +498,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/27/PyQt5程序用PyInstaller打包依赖后运行报错could not find or load the Qt platform plugin windows/" data-id="cjznawrvd0000pa0o1z5ihlk3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/27/PyQt5程序用PyInstaller打包依赖后运行报错could not find or load the Qt platform plugin windows/" data-id="ck1us3rgf0001tc0oe3wj437a" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PyInstaller/">PyInstaller</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PyQt5/">PyQt5</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/打包/">打包</a></li></ul>
@@ -500,7 +545,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/05/在Kivy中自定义MyCheckBox改变显示尺寸/" data-id="cjznawrvy0009pa0oqqgdk21y" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/05/在Kivy中自定义MyCheckBox改变显示尺寸/" data-id="ck1us3rgr000btc0o30u8xsyh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CheckBox/">CheckBox</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kivy/">Kivy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ToggleButton/">ToggleButton</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -605,74 +650,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/01/一次跳闸引起的ubuntu命令学习记录/" data-id="cjznawrvz000apa0owa1838dn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/01/一次跳闸引起的ubuntu命令学习记录/" data-id="ck1us3rgs000ctc0osmyvdptn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubuntu/">ubuntu</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-macos下使用GLEW和GLFW库学习OpenGL-创建一个窗口" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/19/macos下使用GLEW和GLFW库学习OpenGL-创建一个窗口/" class="article-date">
-  <time datetime="2017-04-19T12:47:21.000Z" itemprop="datePublished">2017-04-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/19/macos下使用GLEW和GLFW库学习OpenGL-创建一个窗口/">macos下使用GLEW和GLFW库学习OpenGL-创建一个窗口</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<p><a href="https://learnopengl-cn.readthedocs.io/zh/latest/" target="_blank" rel="noopener">参考的教程地址</a></p>
-<p>一段帮助理解的话：</p>
-<blockquote>
-<p>在我们画出出色的效果之前，首先要做的就是创建一个<strong><em>OpenGL</em></strong>上下文(Context)和一个用于显示的窗口。然而，这些操作在每个系统上都是不一样的，OpenGL有目的地从这些操作抽象(Abstract)出去。这意味着我们不得不自己处理创建窗口，定义OpenGL上下文以及处理用户输入。</p>
-<p>幸运的是，有一些库已经提供了我们所需的功能，其中一部分是特别针对OpenGL的。这些库节省了我们书写操作系统相关代码的时间，提供给我们一个窗口和上下文用来渲染。最流行的几个库有GLUT，SDL，SFML和GLFW。</p>
-</blockquote>
-<blockquote>
-<p><strong><em>GLFW</em></strong>是一个专门针对OpenGL的C语言库，它提供了一些渲染物体所需的最低限度的接口。它允许用户创建OpenGL上下文，定义窗口参数以及处理用户输入，这正是我们需要的。</p>
-<p>到这里，我们仍然有一件事要做。因为OpenGL只是一个标准/规范，具体的实现是由驱动开发商针对特定显卡实现的。由于OpenGL驱动版本众多，它大多数函数的位置都无法在编译时确定下来，需要在运行时查询。任务就落在了开发者身上，开发者需要在运行时获取函数地址并将其保存在一个函数指针中供以后使用。取得地址的方法因平台而异，代码非常繁琐，我们需要对每个可能使用的函数都要重复这个过程。幸运的是，有些库能简化此过程，其中<strong><em>GLEW</em></strong>是目前最新，也是最流行的库。</p>
-</blockquote>
-<p><a href="http://www.glfw.org/download.html" target="_blank" rel="noopener">GLFW库地址</a><br><a href="http://glew.sourceforge.net/index.html" target="_blank" rel="noopener">GLEW库地址</a></p>
-<p>根据平台不同可编译源码，但是macos的brew可以很方便的安装。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew install glfw3</span><br><span class="line">brew install glew</span><br></pre></td></tr></table></figure></p>
-<p>安装后查看lib库和头文件地址，版本号可能不一致：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ls /usr/<span class="built_in">local</span>/Cellar/glew/2.0.0/lib/</span><br><span class="line">ls /usr/<span class="built_in">local</span>/Cellar/glfw/3.2.1/lib/</span><br><span class="line">ls /usr/<span class="built_in">local</span>/Cellar/glew/2.0.0/include/</span><br><span class="line">ls /usr/<span class="built_in">local</span>/Cellar/glfw/3.2.1/include/</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li>打开xcode，新建项目</li>
-<li><p>该项目的Build Phases界面，Link Binary With Libraries中，添加库</p>
-<blockquote>
-<p>OpenGL.framework<br>libglfw.3.2.dylib(add other, shift+command+g, /usr/local/, 到上面glfw的lib库地址添加)<br>libGLEW.2.0.0.dylib(add other, shift+command+g, /usr/local/, 到上面glew的lib库地址添加)</p>
-</blockquote>
-</li>
-<li><p>该项目的Build Settings界面，Search Paths中，添加头文件路径和lib库路径，对应上面的头文件路径和lib库文件路径</p>
-</li>
-<li>编辑cpp文件</li>
-</ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  main.cpp</span></span><br><span class="line"><span class="comment">//  opengl_learning</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="comment">// GLEW</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;GL/glew.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// GLFW是一个专门针对OpenGL的C语言库，它提供了一些渲染物体所需的最低限度的接口。它允许用户创建OpenGL上下文，定义窗口参数以及处理用户输入。</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;GLFW/glfw3.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 窗口定义</span></span><br><span class="line"><span class="keyword">const</span> GLuint WIDTH = <span class="number">800</span>, HEIGHT = <span class="number">600</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 主函数</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 初始化GLFW</span></span><br><span class="line">    <span class="keyword">if</span>(!glfwInit())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="built_in">std</span>::runtime_error(<span class="string">"glfwInit failed"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// mac系统必须添加</span></span><br><span class="line">    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//</span></span><br><span class="line">    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);</span><br><span class="line">    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, <span class="number">3</span>);</span><br><span class="line">    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, <span class="number">3</span>);</span><br><span class="line">    glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建一个窗口对象，这个窗口对象存放了所有和窗口相关的数据，而且会被GLFW的其他函数频繁地用到。</span></span><br><span class="line">    GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, <span class="string">"Create a window"</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span> );</span><br><span class="line">    <span class="keyword">if</span>(window == <span class="literal">nullptr</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"Failed to create GLFW window"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">        glfwTerminate();</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 设置一个“当前”openGL上下文给刚创建的窗口</span></span><br><span class="line">    glfwMakeContextCurrent(window);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 让GLEW在管理OpenGL的函数指针时更多地使用现代化的技术，如果把它设置为GL_FALSE的话可能会在使用OpenGL的核心模式时出现一些问题。</span></span><br><span class="line">    glewExperimental = GL_TRUE;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// GLEW是用来管理OpenGL的函数指针的，所以在调用任何OpenGL的函数之前我们需要初始化GLEW。</span></span><br><span class="line">    <span class="keyword">if</span>(glewInit() != GLEW_OK)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span>&lt;&lt;<span class="string">"Failed to initialize GLEW"</span>&lt;&lt;<span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(!GLEW_VERSION_3_3)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="built_in">std</span>::runtime_error(<span class="string">"openGL 3.3 API is not available"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 告诉OpenGL渲染窗口的尺寸大小，这样OpenGL才只能知道怎样相对于窗口大小显示数据和坐标。我们可以通过调用glViewport函数来设置窗口的维度(Dimension)：</span></span><br><span class="line">    <span class="keyword">int</span> width,height;</span><br><span class="line">    glfwGetFramebufferSize(window, &amp;width, &amp;height);</span><br><span class="line">    glViewport(<span class="number">0</span>, <span class="number">0</span>, width, height);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 程序循环。我们每次循环的开始前检查一次GLFW是否被要求退出，如果是的话该函数返回true然后游戏循环便结束了，之后为我们就可以关闭应用程序了。</span></span><br><span class="line">    <span class="keyword">while</span>(!glfwWindowShouldClose(window))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 检查有没有触发什么事件（比如键盘输入、鼠标移动等）</span></span><br><span class="line">        glfwPollEvents();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 设置清空屏幕所用的颜色。在这里，我们将屏幕设置为了类似黑板的深蓝绿色。</span></span><br><span class="line">        glClearColor(<span class="number">0.2f</span>, <span class="number">0.3f</span>, <span class="number">0.3f</span>, <span class="number">1.0f</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 在每个新的渲染迭代开始的时候我们总是希望清屏，否则我们仍能看见上一次迭代的渲染结果（这可能是你想要的效果，但通常这不是）。我们可以通过调用glClear函数来清空屏幕的颜色缓冲，它接受一个缓冲位(Buffer Bit)来指定要清空的缓冲，可能的缓冲位有GL_COLOR_BUFFER_BIT，GL_DEPTH_BUFFER_BIT和GL_STENCIL_BUFFER_BIT。由于现在我们只关心颜色值，所以我们只清空颜色缓冲。</span></span><br><span class="line">        glClear(GL_COLOR_BUFFER_BIT);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//交换颜色缓冲（它是一个储存着GLFW窗口每一个像素颜色的大缓冲），它在这一迭代中被用来绘制，并且将会作为输出显示在屏幕上。</span></span><br><span class="line">        glfwSwapBuffers(window);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 释放GLFW分配的内存。</span></span><br><span class="line">    glfwTerminate();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/04/19/macos下使用GLEW和GLFW库学习OpenGL-创建一个窗口/" data-id="cjznawrvu0005pa0oga3s5nuv" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/macos/">macos</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/openGL/">openGL</a></li></ul>
 
     </footer>
   </div>
@@ -699,7 +680,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CheckBox/">CheckBox</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kivy/">Kivy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LEDE/">LEDE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-RED/">Node-RED</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyInstaller/">PyInstaller</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyQt5/">PyQt5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SyntaxError/">SyntaxError</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ToggleButton/">ToggleButton</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/frp/">frp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/macos/">macos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-red/">node-red</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openGL/">openGL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/qt5/">qt5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/serial/">serial</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vs/">vs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开机自启/">开机自启</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/打包/">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树莓派/">树莓派</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CheckBox/">CheckBox</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kivy/">Kivy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LEDE/">LEDE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Node-RED/">Node-RED</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyInstaller/">PyInstaller</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyQt5/">PyQt5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SyntaxError/">SyntaxError</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ToggleButton/">ToggleButton</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dietpi/">dietpi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/frp/">frp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/macos/">macos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-red/">node-red</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openGL/">openGL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pishrink/">pishrink</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/qt5/">qt5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/serial/">serial</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vs/">vs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开机自启/">开机自启</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/打包/">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树莓派/">树莓派</a></li></ul>
     </div>
   </div>
 
@@ -709,7 +690,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CheckBox/" style="font-size: 10px;">CheckBox</a> <a href="/tags/Kivy/" style="font-size: 20px;">Kivy</a> <a href="/tags/LEDE/" style="font-size: 10px;">LEDE</a> <a href="/tags/Node-RED/" style="font-size: 10px;">Node-RED</a> <a href="/tags/PyInstaller/" style="font-size: 10px;">PyInstaller</a> <a href="/tags/PyQt5/" style="font-size: 10px;">PyQt5</a> <a href="/tags/SyntaxError/" style="font-size: 10px;">SyntaxError</a> <a href="/tags/ToggleButton/" style="font-size: 10px;">ToggleButton</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/frp/" style="font-size: 10px;">frp</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/macos/" style="font-size: 10px;">macos</a> <a href="/tags/node-red/" style="font-size: 10px;">node-red</a> <a href="/tags/openGL/" style="font-size: 10px;">openGL</a> <a href="/tags/python/" style="font-size: 15px;">python</a> <a href="/tags/qt5/" style="font-size: 10px;">qt5</a> <a href="/tags/serial/" style="font-size: 10px;">serial</a> <a href="/tags/ubuntu/" style="font-size: 15px;">ubuntu</a> <a href="/tags/vs/" style="font-size: 10px;">vs</a> <a href="/tags/开机自启/" style="font-size: 10px;">开机自启</a> <a href="/tags/打包/" style="font-size: 15px;">打包</a> <a href="/tags/树莓派/" style="font-size: 20px;">树莓派</a>
+      <a href="/tags/CheckBox/" style="font-size: 10px;">CheckBox</a> <a href="/tags/Kivy/" style="font-size: 16.67px;">Kivy</a> <a href="/tags/LEDE/" style="font-size: 10px;">LEDE</a> <a href="/tags/Node-RED/" style="font-size: 10px;">Node-RED</a> <a href="/tags/PyInstaller/" style="font-size: 10px;">PyInstaller</a> <a href="/tags/PyQt5/" style="font-size: 10px;">PyQt5</a> <a href="/tags/SyntaxError/" style="font-size: 10px;">SyntaxError</a> <a href="/tags/ToggleButton/" style="font-size: 10px;">ToggleButton</a> <a href="/tags/dietpi/" style="font-size: 10px;">dietpi</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/frp/" style="font-size: 10px;">frp</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/macos/" style="font-size: 10px;">macos</a> <a href="/tags/node-red/" style="font-size: 10px;">node-red</a> <a href="/tags/openGL/" style="font-size: 10px;">openGL</a> <a href="/tags/pishrink/" style="font-size: 10px;">pishrink</a> <a href="/tags/python/" style="font-size: 13.33px;">python</a> <a href="/tags/qt5/" style="font-size: 10px;">qt5</a> <a href="/tags/serial/" style="font-size: 10px;">serial</a> <a href="/tags/ubuntu/" style="font-size: 13.33px;">ubuntu</a> <a href="/tags/vs/" style="font-size: 10px;">vs</a> <a href="/tags/开机自启/" style="font-size: 10px;">开机自启</a> <a href="/tags/打包/" style="font-size: 13.33px;">打包</a> <a href="/tags/树莓派/" style="font-size: 20px;">树莓派</a>
     </div>
   </div>
 
@@ -718,7 +699,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li></ul>
     </div>
   </div>
 
@@ -729,6 +710,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/10/17/dietpi镜像有时无法使用pishrink脚本缩小的原因/">dietpi镜像有时无法使用pishrink脚本缩小的原因</a>
+          </li>
         
           <li>
             <a href="/2019/08/22/node-red代码版本控制/">node-red代码版本控制</a>
@@ -744,10 +729,6 @@
         
           <li>
             <a href="/2018/10/16/buildozer打包kivy应用程序为安卓apk时卡在refreshing resources/">buildozer打包kivy应用程序为安卓apk时卡在refreshing resources</a>
-          </li>
-        
-          <li>
-            <a href="/2018/10/12/运行Node-RED官方docker后安装serial节点/">运行Node-RED官方docker后安装serial节点</a>
           </li>
         
       </ul>

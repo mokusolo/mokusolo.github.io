@@ -88,14 +88,14 @@
 <p>一般使用Win32DiskImager在windows系统上备份树莓派的镜像，这种方式备份出来的镜像为sd卡容量的大小，若在16g卡上安装了一个4g不到的系统，备份出来不仅占空间，刷入时也更花时间，最尴尬的是都是16g的卡也有可能出现略微的容量差异，导致容量小一点的就没法刷入。</p>
 <p>在看<a href="https://blog.csdn.net/lb1885727/article/details/77574502" target="_blank" rel="noopener">Raspberrypi 3 系统备份还原， 基于最小系统镜像实现</a>一文时，注意到以下这句话，才意识到dietpi镜像使用pishrink脚本缩小报ERROR: Image already shrunk to smallest size的原因。<br><img src="/img/2019/boot_and_root.png" alt></p>
 <p>经搜索，发现dietpi系统应该是只在第一次启动时会扩展分区，这被写成一个service而不是像raspberry系统中可以在raspi-config命令后找到，推测运行一次就被mask（注销unit）了。而在工作过程中，16g的卡，我可能用pishrink脚本将初始的dietpi镜像缩小成了4g的dietpi-shrink.img，再把dietpi-shrink.img写入到新的sd后，扩展分区的服务（dietpi-fs_partition_resize.service）并不会运行了，所以/root分区的大小可能就只有3.7g，若再把这个新sd卡上的镜像备份出来（16g），那就无法使用pishrink缩小了。</p>
-<p><a href="https://github.com/MichaIng/DietPi/issues/1821" target="_blank" rel="noopener">DietPi-Drive_Manager | Expand file system button, in case of changed storage</a><br>以上链接给出了解决方法，不需要手动扩展，毕竟方便，只需把扩展分区服务unmask。</p>
+<p><a href="https://github.com/MichaIng/DietPi/issues/1821" target="_blank" rel="noopener">DietPi-Drive_Manager | Expand file system button, in case of changed storage</a><br>以上链接给出了解决方法，不需要手动扩展，比较方便，只需把扩展分区服务unmask。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl unmask dietpi-fs_partition_resize.service</span><br><span class="line">systemctl enable dietpi-fs_partition_resize.service</span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
 <p>重启后备份这个新sd卡上的镜像出来，就又可以使用pishrink缩小了。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/10/17/dietpi镜像有时无法使用pishrink脚本缩小的原因/" data-id="ck1us3rgj0004tc0ox0uzy1k1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/10/17/dietpi镜像有时无法使用pishrink脚本缩小的原因/" data-id="ck1us4sze0007uz0otgw8a3ih" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dietpi/">dietpi</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pishrink/">pishrink</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/树莓派/">树莓派</a></li></ul>
@@ -152,7 +152,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/22/node-red代码版本控制/" data-id="ck1us3rgi0003tc0o4a5lxlwi" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/22/node-red代码版本控制/" data-id="ck1us4szd0006uz0onwau1xd3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node-red/">node-red</a></li></ul>
@@ -211,7 +211,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/08/Raspbian Stretch Lite设置wifi及静态IP/" data-id="ck1us3rgk0005tc0owgc70p3z" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/08/Raspbian Stretch Lite设置wifi及静态IP/" data-id="ck1us4sza0003uz0oyxgwqhkc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/树莓派/">树莓派</a></li></ul>
@@ -302,7 +302,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/05/Raspbian Stretch Lite安装kivy并运行demo显示在触摸屏上/" data-id="ck1us3rgg0002tc0og2ae3avf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/05/Raspbian Stretch Lite安装kivy并运行demo显示在触摸屏上/" data-id="ck1us4sza0002uz0o3jgkmbmi" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kivy/">Kivy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/树莓派/">树莓派</a></li></ul>
@@ -355,7 +355,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/16/buildozer打包kivy应用程序为安卓apk时卡在refreshing resources/" data-id="ck1us3rgm0007tc0o3v6sl2y7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/16/buildozer打包kivy应用程序为安卓apk时卡在refreshing resources/" data-id="ck1us4szb0004uz0oick0253c" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kivy/">Kivy</a></li></ul>
@@ -405,7 +405,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/12/运行Node-RED官方docker后安装serial节点/" data-id="ck1us3rgu000etc0om6if3itt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/12/运行Node-RED官方docker后安装serial节点/" data-id="ck1us4szk000euz0olckjwy8c" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-RED/">Node-RED</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/">docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/serial/">serial</a></li></ul>
@@ -445,7 +445,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/08/树莓派刷LEDE(OpenWRT)后开机自启frpc/" data-id="ck1us3rgs000dtc0or36plpvr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/08/树莓派刷LEDE(OpenWRT)后开机自启frpc/" data-id="ck1us4szk000duz0opbeypg1b" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LEDE/">LEDE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/frp/">frp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/开机自启/">开机自启</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/树莓派/">树莓派</a></li></ul>
@@ -498,7 +498,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/27/PyQt5程序用PyInstaller打包依赖后运行报错could not find or load the Qt platform plugin windows/" data-id="ck1us3rgf0001tc0oe3wj437a" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/27/PyQt5程序用PyInstaller打包依赖后运行报错could not find or load the Qt platform plugin windows/" data-id="ck1us4sz80001uz0ocak43hhg" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PyInstaller/">PyInstaller</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PyQt5/">PyQt5</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/打包/">打包</a></li></ul>
@@ -545,7 +545,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/09/05/在Kivy中自定义MyCheckBox改变显示尺寸/" data-id="ck1us3rgr000btc0o30u8xsyh" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/09/05/在Kivy中自定义MyCheckBox改变显示尺寸/" data-id="ck1us4szj000cuz0ok2xdjg0e" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CheckBox/">CheckBox</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kivy/">Kivy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ToggleButton/">ToggleButton</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -650,7 +650,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/09/01/一次跳闸引起的ubuntu命令学习记录/" data-id="ck1us3rgs000ctc0osmyvdptn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/09/01/一次跳闸引起的ubuntu命令学习记录/" data-id="ck1us4szi000buz0oprkakmpe" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubuntu/">ubuntu</a></li></ul>
